@@ -1,10 +1,25 @@
 {
- "announced": {},
- "history": [],
+ "announced": {
+  "last:https://www.museum.nl/nl/het-noordbrabants-museum/tentoonstelling/15-mysterien-van-de-rozenkrans": "2026-10-22",
+  "last:https://www.museum.nl/nl/museum-more/tentoonstelling/charley-toorop-pyke-koch-alles-of-niets": "2026-10-22",
+  "last:https://www.museum.nl/nl/rijksmuseum-amsterdam/tentoonstelling/carel-visser-in-de-rijksmuseumtuinen": "2026-10-22",
+  "last:https://www.museum.nl/nl/stedelijk-museum-schiedam/tentoonstelling/yves-klein-en-zijn-kunstenaarsfamilie": "2026-10-22",
+  "last:https://www.museum.nl/nl/van-gogh-village-nuenen/tentoonstelling/van-olielamp-naar-oled-licht-op-de-aardappeleters": "2026-10-22",
+  "new:https://www.museum.nl/nl/chabot-museum/tentoonstelling/mensen-zoals-wij-nour-eddine-jarram-en-henk-chabot": "2026-10-22",
+  "new:https://www.museum.nl/nl/huis-marseille-museum-voor-fotografie/tentoonstelling/adolphe-de-meyer-de-essentie-van-een-venetiaanse-droom": "2026-10-22",
+  "new:https://www.museum.nl/nl/kunsthal-rotterdam/tentoonstelling/signac-symphony-of-colours": "2026-10-22"
+ },
+ "history": [
+  {
+   "date": "2026-10-22",
+   "last": 5,
+   "new": 3
+  }
+ ],
  "known_chats": {
   "-1004340208501": "Delft News group (supergroup)"
  },
- "last_post_date": null,
+ "last_post_date": "2026-10-22",
  "tg_offset": 82520882,
  "version": 1
 }
