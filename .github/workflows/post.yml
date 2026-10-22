@@ -1,0 +1,90 @@
+name: Post exhibitions
+
+on:
+  schedule:
+    # Каждую пятницу 07:17, 08:17 и 09:17 UTC — это 9:17 по Амстердаму летом и зимой
+    # плюс резерв. Скрипт сам публикует только раз в две недели (INTERVAL_DAYS)
+    # и только один раз за день, лишние запуски просто завершаются.
+    - cron: "17 7,8,9 * * 5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Пробный прогон: только показать выпуск в логе, ничего не отправлять"
+        type: boolean
+        default: true
+      force:
+        description: "Опубликовать сейчас, не глядя на расписание"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: bot-state
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Build and post
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ANTHROPIC_MODEL: ${{ vars.ANTHROPIC_MODEL }}
+          POST_WEEKDAY: ${{ vars.POST_WEEKDAY }}
+          POST_HOUR: ${{ vars.POST_HOUR }}
+          INTERVAL_DAYS: ${{ vars.INTERVAL_DAYS }}
+          PERIOD_DAYS: ${{ vars.PERIOD_DAYS }}
+          MAX_NEW: ${{ vars.MAX_NEW }}
+          MAX_LAST: ${{ vars.MAX_LAST }}
+          MAX_FETCH: ${{ vars.MAX_FETCH }}
+        run: |
+          ARGS=""
+          if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="$ARGS --dry-run";
+          elif [ "${{ inputs.force }}" = "true" ]; then ARGS="$ARGS --force"; fi
+          python -m bot post $ARGS
+
+      - name: Save state
+        if: always()
+        run: |
+          git config user.name "nl-art-exhibitions-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- state 2>/dev/null || true
+          git add -A -- preview 2>/dev/null || true
+          if git diff --cached --quiet; then echo "state unchanged"; exit 0; fi
+          git commit -m "state: post $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && exit 0; sleep 5; done
+          exit 1
+
+      - name: Keep schedule enabled
+        # GitHub отключает расписание в публичных репозиториях после 60 дней без активности.
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/post.yml/enable" || true
+
+      - name: Alert admin on failure
+        if: failure()
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          ADMIN_CHAT_ID: ${{ secrets.ADMIN_CHAT_ID }}
+        run: |
+          [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$ADMIN_CHAT_ID" ] || exit 0
+          curl -s -o /dev/null -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            --data-urlencode "chat_id=${ADMIN_CHAT_ID}" \
+            --data-urlencode "text=⚠️ Сбой «${{ github.workflow }}». Подробности: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

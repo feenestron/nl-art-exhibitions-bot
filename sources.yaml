@@ -1,0 +1,32 @@
+# Источники выставок. Можно добавлять/отключать (enabled: false) без правки кода.
+#
+# Типы:
+#   museum_nl   — агрегатор museum.nl (Museumvereniging): ~300 музеев с Museumkaart,
+#                 точные даты берутся со страницы каждой выставки.
+#   venue_page  — страница «Tentoonstellingen» отдельного музея, которого нет на museum.nl.
+#                 Выставки и даты со страницы извлекает Claude (нужен ANTHROPIC_API_KEY).
+#                 Параметры: url, venue, city, scope_selector (необязательно).
+
+sources:
+  - name: museum.nl
+    type: museum_nl
+
+  - name: Voorlinden
+    type: venue_page
+    url: https://www.voorlinden.nl/tentoonstellingen/
+    venue: Museum Voorlinden
+    city: Wassenaar
+
+  - name: H'ART Museum
+    type: venue_page
+    url: https://www.hartmuseum.nl/tentoonstellingen
+    venue: H'ART Museum
+    city: Amsterdam
+
+  # Moco выставляет в основном долгие показы без даты окончания — по умолчанию выключен.
+  - name: Moco Museum
+    enabled: false
+    type: venue_page
+    url: https://www.mocomuseum.com/exhibitions/amsterdam/
+    venue: Moco Museum
+    city: Amsterdam
