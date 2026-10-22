@@ -102,6 +102,9 @@ PAGES = {
 }
 
 
+MNL = {"name": "museum.nl", "type": "museum_nl", "min_cards": 1}
+
+
 class DatesTest(unittest.TestCase):
     def test_parse_period(self):
         cases = {
@@ -153,7 +156,7 @@ class CollectTest(unittest.TestCase):
 
     def test_collect_and_classify(self):
         f = FakeFetcher(PAGES)
-        c = collect([{"name": "museum.nl", "type": "museum_nl"}], f, self.window(), {}, 50)
+        c = collect([MNL], f, self.window(), {}, 50)
         got = {cand.ex.title: cand.section for cand in c.candidates}
         self.assertEqual(got, {
             "Signac. Symphony of Colours": "new",
@@ -169,19 +172,19 @@ class CollectTest(unittest.TestCase):
 
     def test_announced_skipped_per_section(self):
         url = "https://www.museum.nl/nl/museum-more/tentoonstelling/charley-toorop-pyke-koch"
-        c = collect([{"name": "museum.nl", "type": "museum_nl"}], FakeFetcher(PAGES), self.window(),
+        c = collect([MNL], FakeFetcher(PAGES), self.window(),
                     {f"new:{url}": "2026-06-05"}, 50)
         self.assertIn(url, [x.ex.url for x in c.candidates])  # объявлена как новая — но не как «последний шанс»
-        c = collect([{"name": "museum.nl", "type": "museum_nl"}], FakeFetcher(PAGES), self.window(),
+        c = collect([MNL], FakeFetcher(PAGES), self.window(),
                     {f"last:{url}": "2026-10-09"}, 50)
         self.assertNotIn(url, [x.ex.url for x in c.candidates])
 
     def test_budget_and_broken_page(self):
         pages = dict(PAGES)
         del pages["https://www.museum.nl/nl/oudheidkamer/tentoonstelling/molens"]
-        c = collect([{"name": "museum.nl", "type": "museum_nl"}], FakeFetcher(pages), self.window(), {}, 2)
+        c = collect([MNL], FakeFetcher(pages), self.window(), {}, 2)
         self.assertTrue(any("MAX_FETCH" in e for e in c.errors))
-        c = collect([{"name": "museum.nl", "type": "museum_nl"}], FakeFetcher(pages), self.window(), {}, 50)
+        c = collect([MNL], FakeFetcher(pages), self.window(), {}, 50)
         self.assertTrue(any("не открылись 1" in e for e in c.errors))
         # дата из списка осталась — выставка всё равно в кандидатах
         self.assertIn("Molens van de streek", [x.ex.title for x in c.candidates])
@@ -201,7 +204,7 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></main></
                      "url": "https://www.voorlinden.nl/tentoonstellingen/eliasson"},
                     {"title": "Signac. Symphony of Colours", "start": "2026-10-24", "end": "2027-02-28"}]
 
-        sources = [{"name": "museum.nl", "type": "museum_nl"},
+        sources = [MNL,
                    {"name": "Voorlinden", "type": "venue_page", "url": "https://www.voorlinden.nl/tentoonstellingen/",
                     "venue": "Kunsthal Rotterdam", "city": "Wassenaar"}]
         c = collect(sources, FakeFetcher(pages), self.window(), {}, 50, extract)
@@ -210,6 +213,28 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p></main></
         titles = [x.ex.title for x in c.candidates]
         self.assertEqual(titles.count("Signac. Symphony of Colours"), 1)
         self.assertIn("Olafur Eliasson", titles)
+
+    def test_health_checks(self):
+        # Обычный порог «мало карточек» срабатывает на маленьком списке
+        c = collect([{"name": "museum.nl", "type": "museum_nl"}], FakeFetcher(PAGES), self.window(), {}, 50)
+        self.assertTrue(any("всего 5 выставок" in e for e in c.errors))
+        # Страницы выставок без JSON-LD: даты из списка, но с предупреждением
+        many = "".join(card(f"/nl/m/tentoonstelling/x{i}", f"X{i}", "T/m 1 november", "M, C") for i in range(12))
+        pages = {f"https://www.museum.nl/nl/m/tentoonstelling/x{i}": "<html><main>x</main></html>" for i in range(12)}
+        c = collect([MNL], FakeFetcher(pages, f"<ul>{many}</ul>"), self.window(), {}, 50)
+        self.assertTrue(any("нет точных дат" in e for e in c.errors))
+        self.assertEqual(len(c.candidates), 12)  # выставки при этом не потеряны
+        # Пустая страница музея
+        empty = "<html><main>" + "Er zijn op dit moment geen tentoonstellingen. " * 10 + "</main></html>"
+        c = collect([{"name": "V", "type": "venue_page", "url": "https://v.nl/t"}],
+                    FakeFetcher({"https://v.nl/t": empty}), self.window(), {}, 50, lambda t, s: [])
+        self.assertTrue(any("ни одной выставки" in e for e in c.errors))
+
+    def test_api_error_hints(self):
+        from bot.llm import explain_api_error
+        self.assertIn("баланс", explain_api_error(400, '{"error":{"message":"Your credit balance is too low"}}', "m"))
+        self.assertIn("ANTHROPIC_MODEL", explain_api_error(404, '{"error":{"type":"not_found_error","message":"model: x"}}', "x"))
+        self.assertIn("недействителен", explain_api_error(401, '{"error":{"type":"authentication_error"}}', "m"))
 
     def test_venue_page_without_key(self):
         sources = [{"name": "Voorlinden", "type": "venue_page", "url": "https://x.nl/"}]

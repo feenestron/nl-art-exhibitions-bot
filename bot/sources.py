@@ -145,13 +145,24 @@ def museum_nl(src: dict, fetcher: Fetcher, window: Window, budget: int) -> Sourc
         if window.wants(start, end):
             wanted.append((c, start, end))
     res.stats["подходят по датам"] = len(wanted)
-    failed = 0
+    # Признаки того, что сайт поменялся и бот работает «вслепую», хотя и не падает.
+    if len(cards) < src.get("min_cards", 150):
+        res.errors.append(f"museum.nl: в списке всего {len(cards)} выставок (обычно 500+) — "
+                          f"проверьте, не изменился ли сайт")
+    dated = sum(1 for c in cards if c["when"])
+    if cards and dated < len(cards) * 0.2:
+        res.errors.append(f"museum.nl: даты распознаны только у {dated} из {len(cards)} карточек — "
+                          f"похоже, изменилась вёрстка списка")
+    failed = no_jsonld = opened = 0
     for i, (c, start, end) in enumerate(wanted):
         ex = Exhibition("museum.nl", c["title"], c["url"], c["venue"], c["city"], start, end,
                         period_text=c["when"])
         if i < budget:
             try:
+                opened += 1
                 d = parse_museum_nl_detail(fetcher.get(c["url"]).text)
+                if not d["start"] and not d["end"]:
+                    no_jsonld += 1
                 ex.start = d["start"] or ex.start
                 ex.end = d["end"] or ex.end
                 ex.city = d["city"] or ex.city
@@ -165,6 +176,9 @@ def museum_nl(src: dict, fetcher: Fetcher, window: Window, budget: int) -> Sourc
         res.items.append(ex)
     if failed:
         res.errors.append(f"museum.nl: не открылись {failed} страниц выставок")
+    if opened >= 10 and no_jsonld > (opened - failed) * 0.5:
+        res.errors.append(f"museum.nl: на {no_jsonld} страницах выставок нет точных дат — "
+                          f"используются даты из списка; похоже, изменилась вёрстка страниц")
     if len(wanted) > budget:
         res.errors.append(f"museum.nl: {len(wanted)} кандидатов, страниц открыто только {budget} "
                           f"(увеличьте MAX_FETCH)")
@@ -192,6 +206,10 @@ def venue_page(src: dict, fetcher: Fetcher, extract) -> SourceResult:
                                     src.get("venue", src["name"]), src.get("city", ""),
                                     start, end, clean_text(item.get("description"), 600)))
     res.stats["найдено"] = len(res.items)
+    if not res.items:
+        # У музея почти всегда идёт хоть одна выставка; пусто — скорее всего, сменился адрес.
+        res.errors.append(f"{src['name']}: на странице не найдено ни одной выставки — "
+                          f"проверьте адрес {src['url']}")
     return res
 
 

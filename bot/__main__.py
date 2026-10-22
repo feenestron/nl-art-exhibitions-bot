@@ -182,7 +182,19 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("chats")
     args = p.parse_args(argv)
     cfg = Config.from_env()
-    return cmd_post(cfg, args) if args.cmd == "post" else cmd_chats(cfg, args)
+    if args.cmd == "chats":
+        return cmd_chats(cfg, args)
+    try:
+        return cmd_post(cfg, args)
+    except Exception as exc:
+        # Причину — сразу админу; workflow всё равно упадёт и пришлёт ссылку на лог.
+        if cfg.bot_token and cfg.admin_chat_id and not args.dry_run:
+            try:
+                Telegram(cfg.bot_token).send_text(
+                    cfg.admin_chat_id, f"⚠️ Выпуск выставок не опубликован: {str(exc)[:600]}")
+            except Exception:
+                log.exception("Не удалось написать админу")
+        raise
 
 
 if __name__ == "__main__":

@@ -49,8 +49,23 @@ class Claude:
                 time.sleep(15 * attempt)
                 continue
             if r.status_code != 200:
-                raise RuntimeError(f"Claude API {r.status_code}: {r.text[:300]}")
+                raise RuntimeError(explain_api_error(r.status_code, r.text, self.model))
             return r.json().get("content", [])
+
+
+def explain_api_error(status: int, body: str, model: str) -> str:
+    """Ошибка Claude API с подсказкой, что сделать (она уходит админу в Telegram)."""
+    low = body.lower()
+    if "credit balance" in low or "billing" in low:
+        hint = "закончился баланс Claude API — пополните его на console.anthropic.com"
+    elif status == 401 or "authentication" in low:
+        hint = "ключ ANTHROPIC_API_KEY недействителен — создайте новый и обновите секрет"
+    elif status == 404 or ("model" in low and "not" in low and "found" in low):
+        hint = (f"модель {model} недоступна (возможно, снята с поддержки) — укажите актуальную "
+                f"в переменной ANTHROPIC_MODEL")
+    else:
+        hint = "ошибка Claude API"
+    return f"{hint}. Claude API {status}: {body[:200]}"
 
 
 def extract_tool_input(content: list[dict]) -> dict | None:
