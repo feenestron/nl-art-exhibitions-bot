@@ -1,8 +1,10 @@
 {
  "announced": {},
  "history": [],
- "known_chats": {},
+ "known_chats": {
+  "-1004340208501": "Delft News group (supergroup)"
+ },
  "last_post_date": null,
- "tg_offset": 0,
+ "tg_offset": 82520882,
  "version": 1
 }
