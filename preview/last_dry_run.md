@@ -1,8 +1,8 @@
-# Выпуск 2026-10-22 13:32
+# Выпуск 2026-10-23 13:41
 
 ## Источники
 
-- museum.nl: в списке 686, подходят по датам 91
+- museum.nl: в списке 688, подходят по датам 93
 - Voorlinden: найдено 2
 - H'ART Museum: найдено 2
 
@@ -10,51 +10,23 @@
 
 ```html
 🎨 <b>Выставки в Нидерландах</b>
-22 октября — 4 ноября
-
-🆕 <b>Открываются</b>
-
-• <b>Поль Синьяк</b> — <a href="https://www.kunsthal.nl/nl/plan-je-bezoek/tentoonstellingen/signac-symphony-of-colours-nl/">Signac. Symphony of Colours</a>
-Kunsthal Rotterdam · с 24 октября по 28 февраля 2027
-<i>Большой обзор творчества Поля Синьяка (1863–1935), мастера неоимпрессионизма и последователя Сёра, развившего пуантилизм.</i>
-
-• <b>Вивиан Сутер</b> — <a href="https://www.museum.nl/nl/elleboogkerk/tentoonstelling/vivian-suter">Vivian Suter</a>
-Elleboogkerk, Amersfoort · с 26 октября по 2 мая 2027
-<i>Масштабная инсталляция Вивиан Сутер в церкви Эллебогкерк: холсты художницы, живущей в джунглях Гватемалы, сравнивают с живописью Хелен Франкенталер.</i>
-
-• <b>Хелла Йонгериус</b> — <a href="https://www.museum.nl/nl/textielmuseum/tentoonstelling/hella-jongerius-slimme-handen">Hella Jongerius – Slimme handen</a>
-TextielMuseum, Tilburg · с 31 октября по 7 марта 2027
-<i>TextielMuseum посвящает выставку текстильному наследию Хеллы Йонгериус, одного из самых известных нидерландских дизайнеров, и её методу работы.</i>
+23 октября — 5 ноября
 
 ⏳ <b>Последний шанс</b>
 
-• <b>Карел Виссер</b> — <a href="https://www.museum.nl/nl/rijksmuseum-amsterdam/tentoonstelling/carel-visser-in-de-rijksmuseumtuinen">Carel Visser in de Rijksmuseumtuinen</a>
-Rijksmuseum Amsterdam · до 25 октября
-<i>Тринадцать монументальных скульптур из железа и бронзы Карела Виссера впервые вместе — в садах Рейксмюseума.</i>
-
-• <b>Шарли Тороп и Пейк Кох</b> — <a href="https://www.museum.nl/nl/museum-more/tentoonstelling/charley-toorop-pyke-koch-alles-of-niets">Charley Toorop &amp; Pyke Koch | Alles of niets</a>
-Museum MORE, Gorssel · до 25 октября
-<i>Двое важнейших нидерландских фигуративных живописцев впервые вместе в одной экспозиции — с неожиданными параллелями и пересечениями.</i>
-
-• <b>Винсент Ван Гог</b> — <a href="https://www.museum.nl/nl/van-gogh-village-nuenen/tentoonstelling/van-olielamp-naar-oled-licht-op-de-aardappeleters">Van olielamp naar OLED – Licht op De aardappeleters</a>
-Van Gogh Village Nuenen · до 25 октября
-<i>В Нюэнене показывают, как Винсент смотрел на свой первый шедевр «Едоки картофеля», и добавляют современный научный взгляд на роль света.</i>
-
-• <b>Ив Кляйн</b> — <a href="https://www.museum.nl/nl/stedelijk-museum-schiedam/tentoonstelling/yves-klein-en-zijn-kunstenaarsfamilie">Yves Klein en zijn kunstenaarsfamilie</a>
-Stedelijk Museum Schiedam · до 25 октября
-<i>Первая в Нидерландах выставка, где вместе показаны работы Ива Кляйна и его семьи — Фритса, Мари и Ротраут Кляйн.</i>
+• <b>Антон Пик</b> — <a href="https://www.museum.nl/nl/anton-pieck-museum/tentoonstelling/de-pareltjes-van-anton-pieck">De pareltjes van Anton Pieck</a>
+Anton Pieck Museum, Hattem · до 31 октября
+<i>В музее Антона Пика в Хаттеме — его знаменитые календарные гравюры с ностальгическими сценами городской жизни XIX века, зимними пейзажами и старыми ремёслами. Закрывается 31 октября.</i>
 ```
 
-## Кандидаты (91)
+## Кандидаты (85)
 
 - [last] 2026-08-28 .. 2026-10-24 — [In het spoor van Walburga](https://www.museum.nl/nl/walburgiskerk-zutphen/tentoonstelling/in-het-spoor-van-walburga) — Walburgiskerk Zutphen, Zutphen
 - [last] 2026-07-17 .. 2026-10-24 — [Oud Veluwse Markt](https://www.museum.nl/nl/museum-nairac/tentoonstelling/oud-veluwse-markt) — Museum Nairac, Barneveld
 - [last] 2026-07-14 .. 2026-10-25 — [Onfortuinlijke Muizen](https://www.museum.nl/nl/natuurhistorisch-museum-rotterdam/tentoonstelling/onfortuinlijke-muizen) — Natuurhistorisch Museum Rotterdam, Rotterdam
-- [last] 2026-06-05 .. 2026-10-25 — [Carel Visser in de Rijksmuseumtuinen](https://www.museum.nl/nl/rijksmuseum-amsterdam/tentoonstelling/carel-visser-in-de-rijksmuseumtuinen) — Rijksmuseum Amsterdam, Amsterdam
-- [last] 2026-07-11 .. 2026-10-25 — [15 Mysteriën van de rozenkrans](https://www.museum.nl/nl/het-noordbrabants-museum/tentoonstelling/15-mysterien-van-de-rozenkrans) — Het Noordbrabants Museum, Den Bosch
+- [last] 2026-07-10 .. 2026-10-25 — [Game On](https://www.museum.nl/nl/nemo-science-museum/tentoonstelling/game-on) — NEMO Science Museum, Amsterdam
 - [last] 2026-07-28 .. 2026-10-25 — [800 jaar Duivenvoorde](https://www.museum.nl/nl/kasteel-duivenvoorde/tentoonstelling/800-jaar-duivenvoorde) — Kasteel Duivenvoorde, Voorschoten
 - [last] 2025-10-30 .. 2026-10-25 — [Ai: de expo](https://www.museum.nl/nl/discovery-museum/tentoonstelling/ai-de-expo) — Discovery Museum, Kerkrade
-- [last] 2026-06-21 .. 2026-10-25 — [Charley Toorop & Pyke Koch | Alles of niets](https://www.museum.nl/nl/museum-more/tentoonstelling/charley-toorop-pyke-koch-alles-of-niets) — Museum MORE, Gorssel
 - [last] 2026-06-16 .. 2026-10-25 — [Charlotte Koenen: Afterimage](https://www.museum.nl/nl/schunck/tentoonstelling/charlotte-koenen-afterimage) — SCHUNCK, Heerlen
 - [last] 2026-07-19 .. 2026-10-25 — [Complex Individuality – korstmossen van Suzette Bousema en Ingeborg Klarenberg](https://www.museum.nl/nl/natuurhistorisch-museum-rotterdam/tentoonstelling/complex-individuality-korstmossen-van-suzette-bousema-en-ingeborg-klarenberg) — Natuurhistorisch Museum Rotterdam, Rotterdam
 - [last] 2026-04-25 .. 2026-10-25 — [De Camino. De reis van je leven](https://www.museum.nl/nl/museum-krona/tentoonstelling/de-camino-de-reis-van-je-leven) — Museum Krona, Uden
@@ -80,12 +52,9 @@ Stedelijk Museum Schiedam · до 25 октября
 - [last] 2026-05-12 .. 2026-10-25 — [Stilleven - Beweeglijkheid van vloeibaar glas stilgelegd](https://www.museum.nl/nl/nationaal-glasmuseum/tentoonstelling/stilleven-beweeglijkheid-van-vloeibaar-glas-stilgelegd) — Nationaal Glasmuseum, Leerdam
 - [last] 2026-07-14 .. 2026-10-25 — [Sustainable Ceramics #2](https://www.museum.nl/nl/keramiekmuseum-princessehof/tentoonstelling/sustainable-ceramics-2) — Keramiekmuseum Princessehof, Leeuwarden
 - [last] 2026-08-29 .. 2026-10-25 — [Takkenmuseum van Maarten Bel](https://www.museum.nl/nl/mij-museum-ijsselstein/tentoonstelling/takkenmuseum-van-maarten-bel) — mij | museum ijsselstein, Ijsselstein
-- [last] 2025-11-27 .. 2026-10-25 — [Van olielamp naar OLED – Licht op De aardappeleters](https://www.museum.nl/nl/van-gogh-village-nuenen/tentoonstelling/van-olielamp-naar-oled-licht-op-de-aardappeleters) — Van Gogh Village Nuenen, Nuenen
 - [last] 2026-04-11 .. 2026-10-25 — [Vergeten Brabantse Gildeschatten](https://www.museum.nl/nl/het-gouverneurshuis/tentoonstelling/vergeten-brabantse-gildeschatten) — Het Gouverneurshuis, Heusden
 - [last] 2026-07-04 .. 2026-10-25 — [Vloeiende Vormen](https://www.museum.nl/nl/landhuis-oud-amelisweerd/tentoonstelling/vloeiende-vormen) — Landhuis Oud Amelisweerd, Bunnik
-- [last] 2026-03-22 .. 2026-10-25 — [Yves Klein en zijn kunstenaarsfamilie](https://www.museum.nl/nl/stedelijk-museum-schiedam/tentoonstelling/yves-klein-en-zijn-kunstenaarsfamilie) — Stedelijk Museum Schiedam, Schiedam
 - [last] 2026-06-18 .. 2026-10-25 — [Zorg achter de voordeur - geschiedenis van de wijkverpleging](https://www.museum.nl/nl/volksbuurtmuseum/tentoonstelling/zorg-achter-de-voordeur-geschiedenis-van-de-wijkverpleging) — Volksbuurtmuseum, Utrecht
-- [last] 2026-07-10 .. 2026-10-26 — [Game On](https://www.museum.nl/nl/nemo-science-museum/tentoonstelling/game-on) — NEMO Science Museum, Amsterdam
 - [last] 2026-09-11 .. 2026-10-29 — [Herman Dijkjans](https://www.museum.nl/nl/walburgiskerk-zutphen/tentoonstelling/herman-dijkjans) — Walburgiskerk Zutphen, Zutphen
 - [last] 2026-09-02 .. 2026-10-31 — [De historische zwaarden van Sloten](https://www.museum.nl/nl/museum-stedhus-sleat/tentoonstelling/de-historische-zwaarden-van-sloten) — Museum Stedhûs Sleat, Sloten
 - [last] 2026-01-23 .. 2026-10-31 — [De pareltjes van Anton Pieck](https://www.museum.nl/nl/anton-pieck-museum/tentoonstelling/de-pareltjes-van-anton-pieck) — Anton Pieck Museum, Hattem
@@ -127,12 +96,11 @@ Stedelijk Museum Schiedam · до 25 октября
 - [new] 2026-10-26 .. 2026-11-07 — [The Poor Man's Rembrandt Project](https://www.museum.nl/nl/museum-rembrandthuis/tentoonstelling/the-poor-mans-rembrandt-project) — Museum Rembrandthuis, Amsterdam
 - [new] 2026-10-30 .. 2026-11-29 — [World Press Photo 2026](https://www.museum.nl/nl/fotomuseum-hilversum/tentoonstelling/world-press-photo-2026) — Fotomuseum Hilversum, Hilversum
 - [new] 2026-10-30 .. 2027-02-07 — [BLOS – Een ontmoeting in kleur, textiel en fotografie](https://www.museum.nl/nl/fotomuseum-hilversum/tentoonstelling/blos-een-ontmoeting-in-kleur-textiel-en-fotografie) — Fotomuseum Hilversum, Hilversum
-- [new] 2026-10-24 .. 2027-02-28 — [Signac. Symphony of Colours](https://www.kunsthal.nl/nl/plan-je-bezoek/tentoonstellingen/signac-symphony-of-colours-nl/) — Kunsthal Rotterdam, Rotterdam
-- [new] 2026-10-24 .. 2027-03-07 — [Adolphe de Meyer – De essentie van een Venetiaanse droom](https://www.museum.nl/nl/huis-marseille-museum-voor-fotografie/tentoonstelling/adolphe-de-meyer-de-essentie-van-een-venetiaanse-droom) — Huis Marseille, Museum voor Fotografie, Amsterdam
+- [new] 2026-11-05 .. 2027-02-07 — [Orakel Een walvis op het strand – fotografie & film van Karlijn van Diepen](https://www.museum.nl/nl/natuurhistorisch-museum-rotterdam/tentoonstelling/orakel-een-walvis-op-het-strand-fotografie-film-van-karlijn-van-diepen) — Natuurhistorisch Museum Rotterdam, Rotterdam
 - [new] 2026-10-24 .. 2027-03-07 — [Andrzej Steinbach – Hier](https://www.museum.nl/nl/huis-marseille-museum-voor-fotografie/tentoonstelling/andrzej-steinbach-hier) — Huis Marseille, Museum voor Fotografie, Amsterdam
 - [new] 2026-10-31 .. 2027-03-07 — [Hella Jongerius – Slimme handen](https://www.museum.nl/nl/textielmuseum/tentoonstelling/hella-jongerius-slimme-handen) — TextielMuseum, Tilburg
 - [new] 2026-10-24 .. 2027-03-07 — [Maya Inès Touam – Belongings](https://www.museum.nl/nl/huis-marseille-museum-voor-fotografie/tentoonstelling/maya-ines-touam-belongings) — Huis Marseille, Museum voor Fotografie, Amsterdam
-- [new] 2026-10-25 .. 2027-03-07 — [Mensen zoals wij - Nour-Eddine Jarram en Henk Chabot](https://www.museum.nl/nl/chabot-museum/tentoonstelling/mensen-zoals-wij-nour-eddine-jarram-en-henk-chabot) — Chabot Museum, Rotterdam
+- [new] 2026-10-31 .. 2027-03-14 — [Hans Bayens - Sculpture Now!](https://www.museum.nl/nl/zandvoorts-museum/tentoonstelling/hans-bayens-sculpture-now) — Zandvoorts Museum, Zandvoort
 - [new] 2026-10-28 .. 2027-03-21 — [Vrij Denken. Hoe de ideeën van Luther en Erasmus de wereld verander(d)en](https://www.museum.nl/nl/luther-museum-amsterdam/tentoonstelling/vrij-denken-hoe-de-ideeen-van-luther-en-erasmus-de-wereld-veranderden) — Luther Museum Amsterdam, Amsterdam
 - [new] 2026-10-24 .. 2027-03-28 — [You will find us in the best places: een overzichtstentoonstelling van Moshekwa Langa](https://www.museum.nl/nl/kunstinstituut-melly/tentoonstelling/you-will-find-us-in-the-best-places-een-overzichtstentoonstelling-van-moshekwa-langa) — Kunstinstituut Melly, Rotterdam
 - [new] 2026-10-26 .. 2027-05-02 — [Vivian Suter](https://www.museum.nl/nl/elleboogkerk/tentoonstelling/vivian-suter) — Elleboogkerk, Amersfoort
